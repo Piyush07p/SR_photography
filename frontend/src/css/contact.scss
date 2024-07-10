@@ -1,0 +1,106 @@
+.contact_div{
+   display: flex;
+   justify-content: center;
+   background-color: #fff;
+   box-shadow: -0.1px 1px 3px rgba(0,0,0,0.3);
+   border-radius: 1rem;
+   margin: 2rem 1rem;
+   
+   >div{
+      
+      width: 40%;
+      margin: 2rem;
+      
+      >h1{
+         text-align: center;
+         margin: 2rem 0;
+      }
+     >div{
+       >h3{
+         margin: 1rem;
+
+        }
+        >p{
+         margin: 0 1rem;
+        }
+        >div{
+            >h2, a{
+
+               margin: 1rem 1rem;
+               color: black;
+               cursor: pointer;
+            }
+        }
+     }
+   }
+   >form{
+
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      margin: 2rem 0.5rem;
+      width: 70vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      >label{
+         font-weight: 600;
+      }
+      >input{
+         width: 42vw;
+         height: 2rem;
+         margin: 1rem 0;
+         outline: none;
+         border: none;
+         border-bottom: 2px solid rgba(0,0,0,0.3);
+         transition: 0.5s ease all;
+          &:hover{
+       
+            height: 2.2rem;
+          }
+          &::after{
+              content: '';
+
+          }
+      }
+      >textarea{
+         width: 42vw;
+      }
+      >button{
+         width: 6rem;
+         height: 2rem;
+         font-weight: 600;
+         letter-spacing: 1px;
+         &:hover{
+            background-color:rgba(0,0,0,0.6);
+            border: none;
+            cursor: pointer;
+            color: #fff;
+         }
+      }
+   }
+}
+
+@media  (max-width:600px) {
+   .contact_div{
+      display: flex;
+       flex-wrap: wrap;
+      align-items: center;
+      >div{
+         // background-color: red;
+         width: 100%;
+      }
+      >form{
+         width: 100%;
+         // background-color: rebeccapurple;
+         margin: 1rem;
+         >input{
+            width: 70vw;
+            height: 2rem;
+         }
+         >textarea{
+            width: 78vw;
+         }
+      }
+   
+   }
+}

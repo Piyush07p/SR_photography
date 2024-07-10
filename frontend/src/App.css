@@ -1,0 +1,19 @@
+.movingDot1{
+    position: fixed;
+    z-index: 10;
+    display:none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    filter: blur(1px);
+    background-color: #ff2d2d;
+}
+.movingDot2{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    z-index: 1;
+    background-color:rgb(239, 28, 28);
+    position: fixed;
+    filter: blur(70px);
+}
