@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { NavLink,useNavigate,useLocation} from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -31,17 +30,17 @@ const Login = () => {
        })
        let data=await resp.json()
        console.log(data)
-       if (data.status==0) {
-          toast.error("Invalid login",{
-              position: 'top-right',
-          })
-          return
-      } else {
-          toast.success("You are logged in successfully",{
-              position: 'top-right',
-          })
+      //  if (data.status==0) {
+      //     toast.error("Invalid login",{
+      //         position: 'top-right',
+      //     })
+      //     return
+      // } else {
+      //     toast.success("You are logged in successfully",{
+      //         position: 'top-right',
+      //     })
           
-      }
+      // }
       localStorage.setItem('userName',JSON.stringify(data.userName))
       localStorage.setItem('isAdmin',JSON.stringify(data.is_admin))
 
@@ -75,7 +74,7 @@ const Login = () => {
   const [togglePass,setTogglePass]=useState(true)
   return (
     <section className='w-full h-[100%] flex justify-center py-[20] border bg-gray-300' >
-    <ToastContainer/>
+    {/* <ToastContainer/> */}
       <div className=' m-2'>
           <h1 className='text-[2rem] pl-3'>Login here...</h1>
           <div className='flex justify-between flex-col p-3 relative'>

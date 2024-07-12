@@ -1,7 +1,7 @@
 import React ,{useState}from 'react'
 import Sidebar from '../../components/Sidebar';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const Upload =() => {
@@ -26,11 +26,11 @@ const Upload =() => {
               } else { 
                    data = await resp.json();
               }
-              if(data){
-                toast.success("Image uploaded successfully !!",{
-                  position: 'top-center',
-                })
-              }
+              // if(data){
+              //   toast.success("Image uploaded successfully !!",{
+              //     position: 'top-center',
+              //   })
+              // }
 
           } catch (error) {
             console.log(error)
@@ -42,7 +42,7 @@ const Upload =() => {
      <h1 className='p-4 text-[2rem] text-center'>Welcome to Admin dashboard</h1>
         <div className='flex'>
           <Sidebar/>
-          <ToastContainer/>         
+          {/* <ToastContainer/>          */}
             <div className='m-2'>
                 <h1 className='text-[2rem]'>Upload images to Gallery</h1>
                     <form encType='multipar/form-data'>

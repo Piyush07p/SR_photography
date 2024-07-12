@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { GraphyContext} from "../Context/ProdContext"
 import {useContext} from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 import '../css/Product.scss'
 const Product = () => {
@@ -71,11 +71,11 @@ const [productData,setProductData]=useState({
         })
       })
       const data=await resp.json();
-      if(data){
-        toast.success("your order successfully created !!",{
-          position: 'top-right',
-      })
-      }
+      // if(data){
+      //   toast.success("your order successfully created !!",{
+      //     position: 'top-right',
+      // })
+      // }
       setProductData({
         productname:prodname,
         quantity:1,
@@ -88,7 +88,7 @@ const [productData,setProductData]=useState({
 
   return (
        <section className='Product_sec'>
-        <ToastContainer/>
+        {/* <ToastContainer/> */}
               {/* <main>
                     <div ref={popUp}>
                         <h3>Product purchased successfully</h3>

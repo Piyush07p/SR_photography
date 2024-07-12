@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import Sidebar from '../../components/Sidebar';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -18,9 +18,9 @@ const Dashboard = () => {
             if (resp.status === 401) {
                 navigate('/login');
             }else if(resp.status===402){
-                toast.warning("You do not have privilage to access this route",{
-                    position: 'top-right',
-                })
+                // toast.warning("You do not have privilage to access this route",{
+                //     position: 'top-right',
+                // })
                 navigate('/profile')
             }  else { 
                 const data = await resp.json();
@@ -48,21 +48,21 @@ const Dashboard = () => {
                 
             });
             const data=await resp.json()
-            if(data){
-                toast.success("User deleted !!",{
-                  position: 'top-right',
-             })
-           }
+        //     if(data){
+        //         toast.success("User deleted !!",{
+        //           position: 'top-right',
+        //      })
+        //    }
         } catch (error) {
             console.log(error)
         }
     }
   return (
-    <section className='w-full'>
+    <section className='w-full relative'>
          <h1 className='p-4 text-[2rem] text-center'>Welcome to Admin dashboard</h1>
-         <ToastContainer/>
-         <div className='flex w-[100%'>
-            <Sidebar/>
+         {/* <ToastContainer/> */}
+         <div className='flex w-[100% ] '>
+            <Sidebar className='absolute top-1 '/>
              <main className='m-2 border w-[80%]   bg-gray-300 flex flex-wrap'>
                 {
                     userData.map((elem,ind)=>{

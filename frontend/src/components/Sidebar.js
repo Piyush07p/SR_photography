@@ -9,8 +9,8 @@ import { FaAddressBook } from "react-icons/fa6";
 
 const Sidebar = () => {
   return (
-    <div>
-        <aside className='m-2 px-4  border bg-gray-300 h-[80vh]'>
+    <div className=' '>
+        <aside className='m-2 px-4    border bg-gray-300 h-[100vh]'>
                 <ul>
                     <NavLink   to='/admin/dashboard'><li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><FaUser className='mr-2'/>Users</li></NavLink>
                     <NavLink  to='/admin/upload'><li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><MdFileUpload className='mr-2'/>Upload images</li></NavLink>

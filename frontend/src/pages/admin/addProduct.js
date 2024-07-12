@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../../components/Sidebar'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
@@ -36,11 +36,11 @@ const AddProduct = () => {
             body:formData
          })
          const data=await resp.json();
-         if(data){
-            toast.success("Product added successfully",{
-                position: 'top-right',
-            }) 
-         }
+        //  if(data){
+        //     toast.success("Product added successfully",{
+        //         position: 'top-right',
+        //     }) 
+        //  }
          setProductName('')
          setPrice('')
          setImage('')
@@ -56,9 +56,9 @@ const AddProduct = () => {
         if (resp.status === 401) {
             navigate('/login');
         }else if(resp.status===402){
-            toast.warning("You do not have privilage to access this route",{
-                position: 'top-right',
-            })
+            // toast.warning("You do not have privilage to access this route",{
+            //     position: 'top-right',
+            // })
             navigate('/profile')
         } else { 
             const data = await resp.json();
@@ -75,9 +75,9 @@ const AddProduct = () => {
                 "Content-Type":"application/json" 
             },
         })
-        toast.success("Product deleted successfully",{
-            position: 'top-right',
-        })
+        // toast.success("Product deleted successfully",{
+        //     position: 'top-right',
+        // })
     }
 
     useEffect(()=>{
@@ -90,7 +90,7 @@ const AddProduct = () => {
 
         <div className='flex'>
             <Sidebar/>
-            <ToastContainer/>
+            {/* <ToastContainer/> */}
             <div className='m-2 w-[85vw]'>
                 <h1 className='text-[2rem]   '>Add your product</h1>
                <main className='flex flex-wrap justify-center w-[100%]  py-2 border-2'>

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import Sidebar from '../../components/Sidebar'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -18,9 +18,9 @@ const Orders = () => {
       if (resp.status === 401) {
           navigate('/login');
       }else if(resp.status===402){
-        toast.warning("You do not have privilage to access this route",{
-            position: 'top-right',
-        })
+        // toast.warning("You do not have privilage to access this route",{
+        //     position: 'top-right',
+        // })
         navigate('/profile')
       }  else { 
           const data = await resp.json();
@@ -38,9 +38,9 @@ const Orders = () => {
     })
     const data=await resp.json();
     if(data){
-      toast.success("Order deletedd successfully !!",{
-        position: 'top-right',
-      })
+      // toast.success("Order deletedd successfully !!",{
+      //   position: 'top-right',
+      // })
     }
     } catch (error) {
       console.log(error)
@@ -56,7 +56,7 @@ const Orders = () => {
 
          <div className='flex w-full'>
              <Sidebar/>
-             <ToastContainer/>
+             {/* <ToastContainer/> */}
              <div className='w-[80%] rounded'>
                  <h1 className='text-[2rem]'>Order List</h1>
                  
