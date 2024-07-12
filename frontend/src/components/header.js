@@ -38,8 +38,8 @@ const Header = () => {
                           </p>
                          )
                          :<p>
-                              <NavLink className='login '  to="/login"><button className='border-2 border-red-400 py-1 px-2 rounded mx-2'>Login</button></NavLink>
-                              <NavLink className='signup '  to="/signup"><button className='bg-red-400 py-1 px-2 rounded text-white'>Signup</button></NavLink>
+                              <NavLink className='login' onClick={navbarVis}  to="/login"><button className='border-2 border-red-400 py-1 px-2 rounded mx-2'>Login</button></NavLink>
+                              <NavLink className='signup' onClick={navbarVis}  to="/signup"><button className='bg-red-400 py-1 px-2 rounded text-white'>Signup</button></NavLink>
                          </p>
                     }
                   </ul>

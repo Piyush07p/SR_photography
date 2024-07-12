@@ -85,14 +85,14 @@ const AddProduct = () => {
   },[removeProduct])
 
   return (
-      <section>
-     <h1 className='p-4 text-[2rem] text-center'>Welcome to Admin dashboard</h1>
+      <section className='w-full '>
+     <h1 className='p-4 text-[1.7rem] sm:text-[2rem] text-center'>Welcome to Admin dashboard</h1>
 
         <div className='flex'>
             <Sidebar/>
             {/* <ToastContainer/> */}
-            <div className='m-2 w-[85vw]'>
-                <h1 className='text-[2rem]   '>Add your product</h1>
+            <div className='sm:m-2 w-[100%] sm:w-[85vw]'>
+                <h1 className='text-[1.7rem] sm:text-[2rem] text-center underline'>Add your product</h1>
                <main className='flex flex-wrap justify-center w-[100%]  py-2 border-2'>
                <form action="" encType='multipart/form-data ' className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[48%]'>
                     <div className='border-2 bg-gray-200 p-10 w-[100%]'>
@@ -116,7 +116,7 @@ const AddProduct = () => {
                         productData.map((elem,ind)=>{
                             return(
                                 <>
-                                  <div className=' grid grid-cols-4 gap-1 border p-2 m-2'>
+                                  <div className='text-[0.7rem] grid grid-cols-4 gap-1 border p-2 m-2'>
                                        <span>{ind+1}</span> <span>{elem.productName}</span>
                                        <span>{elem.price}</span>
                                        <span>

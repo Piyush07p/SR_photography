@@ -52,25 +52,25 @@ const Orders = () => {
   },[deleteOrder])
   return (
     <section>
-     <h1 className='p-4 text-[2rem] align-center text-center'>Welcome to Admin dashboard</h1>
+     <h1 className='p-4 text-[1.7rem] sm:text-[2rem] align-center text-center'>Welcome to Admin dashboard</h1>
 
          <div className='flex w-full'>
              <Sidebar/>
              {/* <ToastContainer/> */}
-             <div className='w-[80%] rounded'>
-                 <h1 className='text-[2rem]'>Order List</h1>
+             <div className='w-[100%] sm:w-[80%] rounded'>
+                 <h1 className='text-[1.5rem] sm:text-[2rem] text-center underline'>Order List</h1>
                  
                       {
                         orderData.map((elem,ind)=>{
                           return(
                             <>
-                               <div className='w-[100%] bg-gray-200 h-[8rem] rounded mx-2 my-4'>
+                               <div className='w-[100%] py-2 bg-gray-200  rounded sm:mx-2 my-4'>
                                   <div className='flex px-4 bg-gray-300 h-[2rem]  w-[100%] justify-between'> 
                                     <p>{elem.productname}</p>
                                     <p>Quantity: {elem.quantity}</p>
                                     
                                   </div>
-                                  <div className='grid grid-cols-4 grid-gap-4 mt-2 justify-between px-4'>
+                                  <div className='grid sm:text-[1rem] text-[0.7rem] grid-cols-4 gap-4 mt-2  px-2'>
                                       <p>{elem.name}</p>
                                       <p>{elem.phone}</p>
                                       <p>{elem.email}</p>

@@ -38,13 +38,13 @@ const Upload =() => {
        }
 
   return (
-   <section>
-     <h1 className='p-4 text-[2rem] text-center'>Welcome to Admin dashboard</h1>
+   <section className=' border w-full'>
+     <h1 className='p-4 text-[1.6rem] sm:text-[2rem] text-center'>Welcome to Admin dashboard</h1>
         <div className='flex'>
           <Sidebar/>
           {/* <ToastContainer/>          */}
-            <div className='m-2'>
-                <h1 className='text-[2rem]'>Upload images to Gallery</h1>
+            <div className='sm:m-2 w-full p-4 bg-gray-200 rounded'>
+                <h1 className='text-[1.5rem] sm:text-[2rem]'>Upload images to Gallery</h1>
                     <form encType='multipar/form-data'>
                          <br/>
                          <input required name='uploadImg' onChange={handleFileInputs} type='file' /> <br/> <br/>

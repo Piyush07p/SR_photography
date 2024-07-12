@@ -58,12 +58,13 @@ const Dashboard = () => {
         }
     }
   return (
-    <section className='w-full relative'>
-         <h1 className='p-4 text-[2rem] text-center'>Welcome to Admin dashboard</h1>
+    <section className='w-full '>
+         <h1 className='px-4 py-2 text-[1.7rem] sm:text-[2rem] text-center border-2'>Welcome to Admin dashboard</h1>
          {/* <ToastContainer/> */}
-         <div className='flex w-[100% ] '>
-            <Sidebar className='absolute top-1 '/>
-             <main className='m-2 border w-[80%]   bg-gray-300 flex flex-wrap'>
+         <div className='flex w-[100% ]   '>
+            <Sidebar className=' '/>
+             <main className='m-2 border w-[100%] sm:w-[80%]  bg-gray-300 flex flex-wrap'>
+             
                 {
                     userData.map((elem,ind)=>{
                         return(
