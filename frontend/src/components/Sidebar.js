@@ -17,10 +17,10 @@ const Sidebar = () => {
         <aside className='m-2 px-4  border bg-gray-300 h-[100vh] relative'>
                 <ul>
                     {
-                      (toggleClass)? <RxHamburgerMenu className={`${!toggleClass?"absolute  right-[0rem] top-[0.2rem]":"fixed  left-[1rem] top-[5rem]"} sm:hidden   text-[1.2rem] `} onClick={()=>setToggleClass(prev=>!prev)}/>:
-                       <RxCross2 className={`${!toggleClass?"absolute  right-[0rem] top-[0.2rem]":"fixed  left-[1rem] top-[5rem]"} sm:hidden   text-[1.2rem] `} onClick={()=>setToggleClass(prev=>!prev)}/>
+                      (toggleClass)? <RxHamburgerMenu className={`${!toggleClass?"absolute  right-[0rem] top-[0.2rem]":"fixed  left-[0.5rem] top-[5rem]"} sm:hidden   text-[1.2rem] rounded text-white bg-red-300 p-1 h-[1.5rem] w-[2rem] `} onClick={()=>setToggleClass(prev=>!prev)}/>:
+                      <RxCross2 className={`${!toggleClass?"absolute  right-[1rem] top-[0.2rem]":"fixed  left-[1rem] top-[5rem]"} sm:hidden   text-[1.4rem] text-gray-600 `} onClick={()=>setToggleClass(prev=>!prev)}/>
                     }
-                    <NavLink   to='/admin/dashboard'><li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><FaUser className='mr-2'/>Users</li></NavLink>
+                    <NavLink   to='/admin/dashboard'><li className='mt-8 flex bg-gray-400 px-2 py-1 rounded text-white'><FaUser className='mr-2'/>Users</li></NavLink>
                     <NavLink  to='/admin/upload'><li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><MdFileUpload className='mr-2'/>Upload images</li></NavLink>
                     <NavLink to='/admin/orders' ><li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><FaAddressBook className='mr-2'/>Orders</li></NavLink>
                     <NavLink  to='/admin/addproduct'> <li className='mt-5 flex bg-gray-400 px-2 py-1 rounded text-white'><MdProductionQuantityLimits className='mr-2'/>Add product</li></NavLink>

@@ -46,7 +46,6 @@ const Contact = () => {
                        <textarea  name='msg' className='border-2 border-gray-400' placeholder='enter message'  id="" cols="30" rows="5"></textarea>
                         <br />
                         <button className='rounded bg-gray-500 text-white'>Submit</button>
-
                 </form>
                </div>
         

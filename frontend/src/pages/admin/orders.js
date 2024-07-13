@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import Sidebar from '../../components/Sidebar'
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import {toast,Toaster} from 'react-hot-toast'
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -18,9 +18,7 @@ const Orders = () => {
       if (resp.status === 401) {
           navigate('/login');
       }else if(resp.status===402){
-        // toast.warning("You do not have privilage to access this route",{
-        //     position: 'top-right',
-        // })
+        toast.warning("You do not have privilage to access this route")
         navigate('/profile')
       }  else { 
           const data = await resp.json();
@@ -38,15 +36,15 @@ const Orders = () => {
     })
     const data=await resp.json();
     if(data){
-      // toast.success("Order deletedd successfully !!",{
-      //   position: 'top-right',
-      // })
+      toast.success("Order deletedd successfully !!")
     }
     } catch (error) {
       console.log(error)
     }
   }
-
+    const acceptOrder=()=>{
+      
+    }
   useEffect(()=>{
      fetchOrder()
   },[deleteOrder])
@@ -56,15 +54,23 @@ const Orders = () => {
 
          <div className='flex w-full'>
              <Sidebar/>
-             {/* <ToastContainer/> */}
+             <Toaster
+                    position="top-center"
+                    reverseOrder={true}
+              />
              <div className='w-[100%] sm:w-[80%] rounded'>
-                 <h1 className='text-[1.5rem] sm:text-[2rem] text-center underline'>Order List</h1>
-                 
+                 <h1 className='text-[1.5rem] sm:text-[2rem] text-center underline'>Order List </h1>
+                 <div className='flex mx-2 py-4 justify-between'>
+                    <span className=' text-red-600'>Pending orders: {orderData?.length}</span>
+                    <span className=' text-green-600'>Completed orders: 0</span>
+
+                 </div>
                       {
+                        
                         orderData.map((elem,ind)=>{
                           return(
                             <>
-                               <div className='w-[100%] py-2 bg-gray-200  rounded sm:mx-2 my-4'>
+                               <div className='w-[100%] py-2 bg-gray-200 sm:text-[1rem] text-[0.8rem] rounded mx-1 sm:mx-2 my-4'>
                                   <div className='flex px-4 bg-gray-300 h-[2rem]  w-[100%] justify-between'> 
                                     <p>{elem.productname}</p>
                                     <p>Quantity: {elem.quantity}</p>
@@ -73,11 +79,11 @@ const Orders = () => {
                                   <div className='grid sm:text-[1rem] text-[0.7rem] grid-cols-4 gap-4 mt-2  px-2'>
                                       <p>{elem.name}</p>
                                       <p>{elem.phone}</p>
-                                      <p>{elem.email}</p>
+                                      <p className='break-words'>{elem.email}</p>
                                       <p>{elem.address}</p>
                                   </div>
-                                  <div className='px-4 mt-4'>
-                                    <button className='px-2 py-1 h-[3] bg-gray-600 text-white rounded'>Accept</button>
+                                  <div className='sm:text-[1rem] text-[0.75rem] px-4 mt-4'>
+                                    <button className='px-2 py-1 h-[3] bg-gray-600 text-white rounded ' onClick={acceptOrder}>Accept</button>
                                     <button className=' px-2 py-1 h-[3] mx-2 bg-red-400 text-white rounded cursor-pointer' onClick={()=>deleteOrder(elem._id)}>Remove</button>
                                   </div>
                               </div>

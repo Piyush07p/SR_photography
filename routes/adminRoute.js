@@ -2,7 +2,8 @@ const express=require('express')
 const adminroute=express.Router(); 
 const multer=require('multer')
 const {getUsers,removeUser,generateOrder,getOrderData,deleteOrder,
-    addProduct,showProduct,deleteProduct,uploadImages,getUploadedImages}=require('../controllers/admindash')
+    addProduct,showProduct,deleteProduct,uploadImages,getUploadedImages,
+    deleteUploadedImg}=require('../controllers/admindash')
     
 const {isLogin}=require('../middleware/userAuth') 
 const path=require('path')
@@ -32,6 +33,7 @@ adminroute.delete('/product/:id',deleteProduct)
 
 adminroute.post('/uploads',upload.single('uploadImg'),uploadImages)
 adminroute.get('/uploads',getUploadedImages)
+adminroute.delete('/uploads/:id',deleteUploadedImg)
 
 
 

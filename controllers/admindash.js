@@ -129,6 +129,17 @@ const getUploadedImages=async(req,res)=>{
   }
 }
 
+const deleteUploadedImg=async ( req,res)=>{
+      try {
+        const data=await imguploadModel.deleteOne({_id:req.params.id});
+        res.status(200).json({
+            msg:"Image deleted successfully"
+        })
+    } catch (error) {
+    console.log(error)
+    }
+}
+
 
 module.exports={
     getUsers,
@@ -140,6 +151,7 @@ module.exports={
     showProduct,
     deleteProduct,
     uploadImages,
-    getUploadedImages
+    getUploadedImages,
+    deleteUploadedImg
 }
 

@@ -3,7 +3,7 @@ import Sidebar from '../../components/Sidebar'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-
+import {toast,Toaster} from 'react-hot-toast'
 const AddProduct = () => {
  
     const [productName , setProductName]=useState('')
@@ -36,11 +36,9 @@ const AddProduct = () => {
             body:formData
          })
          const data=await resp.json();
-        //  if(data){
-        //     toast.success("Product added successfully",{
-        //         position: 'top-right',
-        //     }) 
-        //  }
+         if(data){
+            toast.success("Product added successfully") 
+         }
          setProductName('')
          setPrice('')
          setImage('')
@@ -56,9 +54,7 @@ const AddProduct = () => {
         if (resp.status === 401) {
             navigate('/login');
         }else if(resp.status===402){
-            // toast.warning("You do not have privilage to access this route",{
-            //     position: 'top-right',
-            // })
+            toast.warning("You do not have privilage to access this route")
             navigate('/profile')
         } else { 
             const data = await resp.json();
@@ -75,9 +71,7 @@ const AddProduct = () => {
                 "Content-Type":"application/json" 
             },
         })
-        // toast.success("Product deleted successfully",{
-        //     position: 'top-right',
-        // })
+        toast.success("Product deleted successfully")
     }
 
     useEffect(()=>{
@@ -90,7 +84,10 @@ const AddProduct = () => {
 
         <div className='flex'>
             <Sidebar/>
-            {/* <ToastContainer/> */}
+                <Toaster
+                    position="top-center"
+                    reverseOrder={true}
+                />
             <div className='sm:m-2 w-[100%] sm:w-[85vw]'>
                 <h1 className='text-[1.7rem] sm:text-[2rem] text-center underline'>Add your product</h1>
                <main className='flex flex-wrap justify-center w-[100%]  py-2 border-2'>
@@ -116,7 +113,7 @@ const AddProduct = () => {
                         productData.map((elem,ind)=>{
                             return(
                                 <>
-                                  <div className='text-[0.7rem] grid grid-cols-4 gap-1 border p-2 m-2'>
+                                  <div className='text-[0.8rem] sm:text-[1rem] grid grid-cols-4 gap-1 border p-2 m-2'>
                                        <span>{ind+1}</span> <span>{elem.productName}</span>
                                        <span>{elem.price}</span>
                                        <span>

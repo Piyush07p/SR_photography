@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import '../css/header.scss'
 import {NavLink} from "react-router-dom";
 import {RxHamburgerMenu} from "react-icons/rx"
+import { RxCross2 } from "react-icons/rx";
 
 const Header = () => {
      const hamUl= useRef("")
@@ -20,7 +21,7 @@ const Header = () => {
                  <div className="logo">
                     
                     <NavLink className='navlink'  to="/">
-                     <img width="40rem" src={require('./images/srlogo2.png')} alt='logo'/>
+                     <img width="40rem" height='40rem' src={require('./images/srlogo2.png')} alt='logo'/>
                     </NavLink>
                  </div>
                  <ul ref={hamUl} className='text-[0.9rem]'>
@@ -32,8 +33,8 @@ const Header = () => {
                     {
                          (JSON.parse(localStorage.getItem('userName')))?
                           (<p>
-                              <NavLink onClick={navbarVis} to={JSON.parse(localStorage.getItem("isAdmin"))?'/admin/dashboard':'/profile'}className=' text-[1rem] underline border-2 rounded p-1  border-red-400'>{(JSON.parse(localStorage.getItem('userName')))}</NavLink>
-                              <NavLink to='/logout'><button className='mx-3 bg-red-400 p-1 text-white rounded'>Logout</button></NavLink>
+                              <NavLink onClick={navbarVis} to={JSON.parse(localStorage.getItem("isAdmin"))?'/admin/dashboard':'/profile'}className=' text-[1rem]  border-2 rounded p-1  border-red-400'>{(JSON.parse(localStorage.getItem('userName')))}</NavLink>
+                              <NavLink  onClick={navbarVis}  to='/logout'><button className='mx-3 bg-red-400 p-1 text-white rounded'>Logout</button></NavLink>
                               <br/>
                           </p>
                          )
@@ -43,8 +44,11 @@ const Header = () => {
                          </p>
                     }
                   </ul>
-                  <p ref={hamB} onClick={navbarVis} className='hamBur'>
-                     <RxHamburgerMenu/>
+                  <p ref={hamB}  className='hamBur'>
+                     {
+                         (flag)?<RxHamburgerMenu onClick={navbarVis}/>
+                         :<RxCross2 onClick={navbarVis}/>
+                     }
                   </p>
             </nav>
        </>

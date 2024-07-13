@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import {toast,Toaster} from 'react-hot-toast'
+
 import { NavLink,useNavigate } from 'react-router-dom';
 
 
@@ -31,18 +31,13 @@ const Signup = () => {
          })
          let data=await resp.json()
 
-        //  if (!data) {
-        //     toast.error("Invalid registration",{
-        //         position: 'top-right',
-        //     })
-        
+         if (!data) {
+            toast.error("Invalid registration")
 
-        // } else {
-        //     toast.success("you are registered successfully",{
-        //         position: 'top-right',
-        //     })
+        } else {
+            toast.success("you are registered successfully")
             
-        // }
+        }
         navigate('/login')
 
         
@@ -65,7 +60,10 @@ const Signup = () => {
     }
   return (
       <section className='w-full h-[100%] flex justify-center py-[20] border bg-gray-300' >
-        {/* <ToastContainer/> */}
+            <Toaster
+                    position="top-center"
+                    reverseOrder={true}
+            />
           <div className=''>
               <h1 className='text-[2rem] pl-3'>Register here...</h1>
               <div className='flex justify-between flex-col p-3'>

@@ -6,10 +6,10 @@
     
 }
 html,body{
-    
+    min-height: 100vh;
     font-size: 16px;
     background-color: #F2F4F8;
-    
+    overflow-x: hidden;
 }
 
 .home_sec{
@@ -358,8 +358,9 @@ html,body{
             justify-content: center;
             box-shadow: -0.1px 1px 3px rgba(0,0,0,0.3);
 
-            border-radius: 1rem;
+            border-radius: 0.2rem;
             margin: 0.6rem;
+            padding: 0.4rem;
             >div{
                flex: 20%;
                 img{
@@ -367,6 +368,17 @@ html,body{
                     width: 100%;
                     height: auto;
 
+                }
+            }
+        }
+    }
+    @media (max-width:800px){
+        .work{
+           
+            >div{
+               
+                .img_container{
+                    flex: 30%;
                 }
             }
         }

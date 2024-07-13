@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { GraphyContext} from "../Context/ProdContext"
 import {useContext} from "react";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import {toast,Toaster} from 'react-hot-toast'
 
 import '../css/Product.scss'
 const Product = () => {
@@ -71,11 +70,9 @@ const [productData,setProductData]=useState({
         })
       })
       const data=await resp.json();
-      // if(data){
-      //   toast.success("your order successfully created !!",{
-      //     position: 'top-right',
-      // })
-      // }
+      if(data){
+        toast.success("Your order successfully created !!")
+      }
       setProductData({
         productname:prodname,
         quantity:1,
@@ -88,13 +85,11 @@ const [productData,setProductData]=useState({
 
   return (
        <section className='Product_sec'>
-        {/* <ToastContainer/> */}
-              {/* <main>
-                    <div ref={popUp}>
-                        <h3>Product purchased successfully</h3>
-                        <button  onClick={()=>showPopup(false)}>OK</button>
-                    </div>
-              </main> */}
+              <Toaster 
+                    position="top-center"
+                    reverseOrder={true}
+                />
+              
                 <div>
                     <div className='prod_img'>
                           <img src={`./uploads/${prodImg}`} alt="" />
@@ -113,8 +108,8 @@ const [productData,setProductData]=useState({
 
                         <div className='buy_detail'>
                          <form action='' method='POST'>
-                           <input style={{display:"none"}}  name="quantity"  /> 
-                           <input onChange={handleInputs} value={productData.productname} style={{display:"none"}} name="productname"  /> 
+                            <input style={{display:"none"}}  name="quantity"  /> 
+                            <input onChange={handleInputs} value={productData.productname} style={{display:"none"}} name="productname"  /> 
                             <label  required htmlFor="">Enter name</label>
                             <input name='name' value={productData.name} onChange={handleInputs} required placeholder='your name' type="text" /> <br />
                             <label  required  htmlFor="">Enter mobile no.</label>
@@ -126,8 +121,6 @@ const [productData,setProductData]=useState({
                             <button className=' w-[10rem]' onClick={createOrder}>Buy</button>
                            </form>
                          </div>
-
-                        
                     </div>
                 </div>
        </section>

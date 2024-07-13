@@ -17,3 +17,11 @@
     position: fixed;
     filter: blur(70px);
 }
+@media (max-width:600px) {
+    .movingDot1{
+        display: none;
+    }
+    .movingDot2{
+       display: none;
+    }
+}

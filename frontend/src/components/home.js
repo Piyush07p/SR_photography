@@ -110,7 +110,7 @@ const [productData,setProductData]=useState([])
               wData.map((e) => {
                 return (
                   <>
-                    <div>
+                    <div className='img_container'>
                       <img src={require(`${e.link}`)} alt="" />
                     </div>
                   </>

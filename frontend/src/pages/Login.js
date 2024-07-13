@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { NavLink,useNavigate,useLocation} from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import {toast,Toaster} from 'react-hot-toast'
 
 const Login = () => {
   const navigate=useNavigate()
@@ -30,17 +31,12 @@ const Login = () => {
        })
        let data=await resp.json()
        console.log(data)
-      //  if (data.status==0) {
-      //     toast.error("Invalid login",{
-      //         position: 'top-right',
-      //     })
-      //     return
-      // } else {
-      //     toast.success("You are logged in successfully",{
-      //         position: 'top-right',
-      //     })
-          
-      // }
+       if (data.status==0) {
+          toast.error("Invalid login",)
+          return
+      } else {
+          toast.success("You are logged in successfully");  
+      }
       localStorage.setItem('userName',JSON.stringify(data.userName))
       localStorage.setItem('isAdmin',JSON.stringify(data.is_admin))
 
@@ -51,10 +47,7 @@ const Login = () => {
           const from = location.state?.from?.pathname || '/';
           navigate(from);
       }
-     
-      
 
-      
      } catch (error) {
        console.log(error)
      }
@@ -74,7 +67,10 @@ const Login = () => {
   const [togglePass,setTogglePass]=useState(true)
   return (
     <section className='w-full h-[100%] flex justify-center py-[20] border bg-gray-300' >
-    {/* <ToastContainer/> */}
+      <Toaster
+           position="top-center"
+           reverseOrder={true}
+       />
       <div className=' m-2'>
           <h1 className='text-[2rem] pl-3'>Login here...</h1>
           <div className='flex justify-between flex-col p-3 relative'>

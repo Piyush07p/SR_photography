@@ -3,6 +3,7 @@ import Sidebar from '../../components/Sidebar';
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import {toast,Toaster} from 'react-hot-toast'
 
 const Dashboard = () => {
     const [userData,setUserData]=useState([]);
@@ -48,11 +49,9 @@ const Dashboard = () => {
                 
             });
             const data=await resp.json()
-        //     if(data){
-        //         toast.success("User deleted !!",{
-        //           position: 'top-right',
-        //      })
-        //    }
+            if(data){
+                toast.success("User deleted !!")
+           }
         } catch (error) {
             console.log(error)
         }
@@ -60,7 +59,10 @@ const Dashboard = () => {
   return (
     <section className='w-full '>
          <h1 className='px-4 py-2 text-[1.7rem] sm:text-[2rem] text-center border-2'>Welcome to Admin dashboard</h1>
-         {/* <ToastContainer/> */}
+         <Toaster
+           position="top-center"
+           reverseOrder={true}
+       />
          <div className='flex w-[100% ]   '>
             <Sidebar className=' '/>
              <main className='m-2 border w-[100%] sm:w-[80%]  bg-gray-300 flex flex-wrap'>
@@ -69,7 +71,7 @@ const Dashboard = () => {
                     userData.map((elem,ind)=>{
                         return(
                             <>
-                             <div className='p-2 text-white rounded w-[12rem]  h-[8rem] bg-gray-600 m-2  '>
+                             <div className='p-2 text-white rounded w-[10rem] text-[0.8rem] sm:text-[1rem] sm:w-[12rem]  h-[8rem] bg-gray-600 m-2  '>
                                 <h2> {elem.name}</h2>
                                 <p>{elem.email}</p>
                                 <button className='bg-gray-800 p-1 rounded my-4 ' onClick={()=>removeUser(elem._id)}>Remove</button>
