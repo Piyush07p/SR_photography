@@ -63,7 +63,6 @@ const Orders = () => {
                  <div className='flex mx-2 py-4 justify-between'>
                     <span className=' text-red-600'>Pending orders: {orderData?.length}</span>
                     <span className=' text-green-600'>Completed orders: 0</span>
-
                  </div>
                       {
                         

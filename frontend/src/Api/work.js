@@ -4,7 +4,7 @@ const workData=[
         link:"./images/home1.JPG",
     },
     {
-        link:"./images/gal6.JPG",
+        link:"./images/home3.JPG",
     },
     {
         link:"./images/gal20.jpg",
@@ -14,17 +14,17 @@ const workData=[
     },
     
     {
-        link:"./images/gal8.JPG",
+        link:"./images/gal24.jpg",
     },
     
     {
         link:"./images/gal10.JPG",
     },
     {
-        link:"./images/gal18.JPG",
+        link:"./images/gal17.JPG",
     },
     {
-        link:"./images/gal7.JPG",
+        link:"./images/gal28.jpg",
     },
     
 ]
