@@ -1,5 +1,5 @@
 .footer_sec{
-    height: 8rem;
+   
     width: 100vw;
     box-sizing: border-box;
     background-color: rgba(0,0,0,0.85);
@@ -7,6 +7,10 @@
     margin-top: 5rem;
     display: flex;
     // margin-top: auto;
+    position: relative;
+    bottom: -3rem; /* Adjust based on footer height */
+    height: 8rem; /* Footer height */
+    clear: both;
  
     .cright{
         display: flex;

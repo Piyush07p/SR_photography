@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../../components/Sidebar'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../components/Loader';
 import { useNavigate } from 'react-router-dom';
 import {toast,Toaster} from 'react-hot-toast'
 const AddProduct = () => {
@@ -10,7 +11,7 @@ const AddProduct = () => {
     const [price , setPrice]=useState('')
     const [image , setImage]=useState(null)
     const navigate=useNavigate()
-
+    const [spinnerBtn,setSpinnerBtn]=useState(true)
 
     const handleProdNameInputs=(e)=>{
          setProductName(e.target.value)
@@ -31,6 +32,7 @@ const AddProduct = () => {
         formData.append('price', price);
         formData.append('image', image);
         console.log("--->>",formData)
+        setSpinnerBtn(false)
          const resp=await fetch('/admin/product',{
             method:"POST",
             body:formData
@@ -38,6 +40,7 @@ const AddProduct = () => {
          const data=await resp.json();
          if(data){
             toast.success("Product added successfully") 
+            setSpinnerBtn(true)
          }
          setProductName('')
          setPrice('')
@@ -65,6 +68,7 @@ const AddProduct = () => {
   
     
     const removeProduct=async(id)=>{
+        
         const resp=await fetch(`/admin/product/${id}`,{
             method:"delete",
             headers:{
@@ -99,7 +103,7 @@ const AddProduct = () => {
                         <input required name='price' value={price} onChange={handlePriceInputs}  className='w-[80%] h-[2.2rem] border-black-100 border-2 px-2' placeholder='Enter product price' type="text" /><br /><br />
                         <label htmlFor="">Upload image</label> <br /> <br />
                         <input  name='image' required  onChange={handleFileInputs}  type="file" /><br /> <br />
-                        <button type='submit' className='bg-red-400 text-white px-4 py-1 rounded' onClick={uploadProduct}>Add</button>
+                        <button type='submit' className='bg-red-400 text-white px-4 py-1 rounded' onClick={uploadProduct}>{(spinnerBtn)?"Add":<Loader/>}</button>
                     </div>
                 </form>
                 <div action="" className='m-1 w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] border-2 p-1 h-[24rem] overflow-y-scroll' >  

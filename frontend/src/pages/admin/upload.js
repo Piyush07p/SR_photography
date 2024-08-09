@@ -3,11 +3,13 @@ import Sidebar from '../../components/Sidebar';
 import {toast,Toaster} from 'react-hot-toast'
 
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 const Upload =() => {
      
        const [image , setImage]=useState(null);
        const navigate=useNavigate();
+       const [spinnerBtn,setSpinnerbtn]=useState(true)
        const handleFileInputs=(e)=>{
           setImage(e.target.files[0]);
        }
@@ -15,6 +17,7 @@ const Upload =() => {
             e.preventDefault()
             const formData = new FormData();
             formData.append('uploadImg', image);
+            setSpinnerbtn(false)
                try {
                   const resp=await fetch('/admin/uploads',{
                       method:"POST",
@@ -26,10 +29,12 @@ const Upload =() => {
               } else { 
                    data = await resp.json();
               }
-              if(data){
+              
                 toast.success("Image uploaded successfully !!")
-              }
-
+                setSpinnerbtn(true)
+                alert("helo")
+              
+            
           } catch (error) {
             console.log(error)
           }
@@ -79,7 +84,7 @@ const Upload =() => {
                     <form encType='multipar/form-data'>
                          <br/>
                          <input required name='uploadImg' onChange={handleFileInputs} type='file' /> <br/> <br/>
-                         <button className='bg-red-400 px-2 py-1 rounded text-white' onClick={uploadImgdata}>Upload</button>
+                         <button className='bg-red-400 px-2 py-1 rounded text-white min-w-[5rem]' onClick={uploadImgdata}>{(spinnerBtn)?"Upload":<Loader/>}</button>
                     </form>
             </div>
             <div className='sm:m-2 w-[100%] h-[100vh] mt-2 sm:w-[90%] lg:w-[70%] p-4 bg-gray-200 overflow-scroll rounded'>

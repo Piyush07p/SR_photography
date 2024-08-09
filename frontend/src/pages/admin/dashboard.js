@@ -4,12 +4,15 @@ import Sidebar from '../../components/Sidebar';
 // import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import {toast,Toaster} from 'react-hot-toast'
+import Loader from '../../components/Loader';
 
 const Dashboard = () => {
     const [userData,setUserData]=useState([]);
     const navigate=useNavigate()
+    const [spinnerBtn,setSpinnerBtn]=useState(true)
     const fetchUser=async()=>{
         try {
+            
             const resp=await fetch('/admin/dashboard',{
                 method:"GET",
                 headers:{
@@ -41,6 +44,7 @@ const Dashboard = () => {
     const removeUser=async(id)=>{ 
         
         try {
+            setSpinnerBtn(false)
             const resp=await fetch(`http://localhost:5500/admin/dashboard/${id}`,{
                 method:"DELETE",  
                 headers:{
@@ -51,6 +55,7 @@ const Dashboard = () => {
             const data=await resp.json()
             if(data){
                 toast.success("User deleted !!")
+                setSpinnerBtn(true)
            }
         } catch (error) {
             console.log(error)
@@ -71,10 +76,10 @@ const Dashboard = () => {
                     userData.map((elem,ind)=>{
                         return(
                             <>
-                             <div className='p-2 text-white rounded w-[10rem] text-[0.8rem] sm:text-[1rem] sm:w-[12rem]  h-[8rem] bg-gray-600 m-2  '>
+                             <div className='p-2 text-white rounded w-[10rem] text-[0.8rem] sm:text-[1rem] sm:w-[12rem]  h-[8rem] bg-gray-600 m-2   '>
                                 <h2> {elem.name}</h2>
                                 <p>{elem.email}</p>
-                                <button className='bg-gray-800 p-1 rounded my-4 ' onClick={()=>removeUser(elem._id)}>Remove</button>
+                                <button className='bg-gray-800 p-1 rounded my-4 min-w-[5rem] ' onClick={()=>removeUser(elem._id)}>{spinnerBtn?"Remove":<Loader/>}</button>
                             </div>
                             </>
                         )

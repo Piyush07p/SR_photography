@@ -5,15 +5,18 @@ import { NavLink,useNavigate,useLocation} from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import {toast,Toaster} from 'react-hot-toast'
+import  Loader from '../components/Loader'
 
 const Login = () => {
   const navigate=useNavigate()
   const location=useLocation()
+  const [spinnerBtn,setSpinnerBtn]=useState(true)
   const [userData,setUserData]=useState({
       email:"",
       password:""
   })
   const userLoginFunc= async(e)=>{
+    setSpinnerBtn(false)
      try {
        const {email,password}=userData;
         if(!email||!password){
@@ -33,8 +36,10 @@ const Login = () => {
        console.log(data)
        if (data.status==0) {
           toast.error("Invalid login",)
+          setSpinnerBtn(true)
           return
       } else {
+         setSpinnerBtn(true)
           toast.success("You are logged in successfully");  
       }
       localStorage.setItem('userName',JSON.stringify(data.userName))
@@ -83,7 +88,7 @@ const Login = () => {
                 :
                 <MdOutlineRemoveRedEye className='absolute right-[-1rem] bottom-[7.4rem] cursor-pointer' onClick={()=>setTogglePass(prev=>!prev)}/>
               }
-              <button onClick={userLoginFunc} className=' h-[3] py-3 my-6 bg-gray-700 text-white '>Login</button>
+              <button onClick={userLoginFunc} className=' h-[3] py-3 my-6 bg-gray-700 text-white '>{spinnerBtn?"Login":<Loader/>}</button>
           </div>
           <p className='m-2'>Create account: <NavLink to='/signup' className='underline'>Signup</NavLink></p>
 

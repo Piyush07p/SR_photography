@@ -6,6 +6,7 @@ import serviceData from "../Api/service-data"
 import printData from "../Api/printing";
 import { GraphyContext} from "../Context/ProdContext"
 import {useContext} from "react";
+import Loader from './Loader'
 
 const Home = () => {
   const {prodname,setprodName,prodPrice,setprodPrice,prodImg,setprodImg}=useContext(GraphyContext);
@@ -14,20 +15,17 @@ const Home = () => {
   const [prinData, setprinData] = useState(printData)
   const [flag, setflag] = useState(true)
   const expDiv = useRef("")
-
+  const [visible,setVisible]=useState(4)
   const expandDiv = () => {
-    if (flag) {
-      expDiv.current.style.height = "100%"
-    } else {
-      expDiv.current.style.height = "49rem"
-    }
-    setflag(!flag)
+    
+      setVisible(prev=>prev+4)
+      // setflag(!flag)
   }
   const setItem=(elem)=>{
       setprodName(elem.productName)
       setprodPrice(elem.price)
       setprodImg(elem.image)
-      console.log(prodImg)
+      console.log(prodImg)  
   }
 const [productData,setProductData]=useState([])
   const fetchProduct=async()=>{
@@ -59,6 +57,7 @@ const [productData,setProductData]=useState([])
         {/* --------------(( ))--------------- */}
         <section className='detailSec'>
            <h1 className='branh1'>Sr Photography</h1>
+          
         <div className="detail_div">
           
           {/* <div className='home_img'>
@@ -129,7 +128,7 @@ const [productData,setProductData]=useState([])
               serData.map((e) => {
                 return (
                   <>
-                    <div >
+                    <div>
                       <h1>{e.name}</h1>
                       <h3>{e.price}</h3>
                       <button className='bg-gray-700'>
@@ -169,7 +168,7 @@ const [productData,setProductData]=useState([])
           </div> */}
             <div ref={expDiv} className='bg-gray-300'>
                   {
-                    productData.map((elem) => {
+                    productData.slice(0,visible).map((elem) => {
                       return (
                         <>
                           <div>

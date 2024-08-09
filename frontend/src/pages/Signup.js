@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {toast,Toaster} from 'react-hot-toast'
 
 import { NavLink,useNavigate } from 'react-router-dom';
-
+import Loader from '../components/Loader';
 
 const Signup = () => {
     const navigate=useNavigate()
@@ -13,7 +13,9 @@ const Signup = () => {
         email:"",
         password:""
     })
+    const [spinnerBtn,setSpinnerBtn]=useState(true)
     const userRegisterFunc= async(e)=>{
+        setSpinnerBtn(false)
        try {
          const {name,phone,email,password}=userData;
           if(!name||!phone||!email||!password){
@@ -33,10 +35,11 @@ const Signup = () => {
 
          if (!data) {
             toast.error("Invalid registration")
+            setSpinnerBtn(true)
 
         } else {
             toast.success("you are registered successfully")
-            
+            setSpinnerBtn(true)   
         }
         navigate('/login')
 
@@ -75,7 +78,7 @@ const Signup = () => {
                   <input className='border-1  sm:w-[20rem] h-[2.5rem] h-[2.5rem] px-2' placeholder='enter email' onChange={handleInputs} name='email' type="text" /> <br /> <br />
                   <label htmlFor="" >Password</label>
                   <input type="password" className='border-1 w-[17rem] sm:w-[20rem]  h-[2.5rem] px-2' placeholder='enter password' onChange={handleInputs} name='password'  />
-                  <button onClick={userRegisterFunc} className=' h-[3] py-3 my-6 bg-gray-700 text-white '>Register</button>
+                  <button onClick={userRegisterFunc} className=' h-[3] py-3 my-6 bg-gray-700 text-white '>{spinnerBtn?"Register":<Loader/>}</button>
               </div>
               <p className='m-2'>Already have an account? <NavLink to='/login' className="underline">Login</NavLink></p>
           </div>
